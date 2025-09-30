@@ -108,18 +108,17 @@ app.get("/api/orders", async (req, res) => {
       include: {
         table: true,
         customer: true,
-        items: {
-          include: { menuItem: true },
-        },
+        items: { include: { menuItem: true } }
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "desc" }
     });
     res.json(orders);
-  } catch (error) {
-    console.error("❌ Failed to fetch orders:", error);
+  } catch (err) {
+    console.error("❌ Failed to fetch orders:", err);
     res.status(500).json({ error: "Failed to fetch orders" });
   }
 });
+
 
 /* ✅ Get all waiters */
 app.get("/api/waiters", async (req, res) => {
