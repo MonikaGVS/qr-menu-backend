@@ -16,6 +16,11 @@ const io = new Server(server, { cors: { origin: "*" } });
 
 const PORT = process.env.PORT || 8080;
 
+// ✅ Add this health check route here 👇
+app.get("/", (req, res) => {
+  res.send("🚀 QR Menu backend is running successfully!");
+});
+
 /* ✅ Fetch menu for a specific restaurant + table */
 app.get("/api/menu/:slug/:tableNumber", async (req, res) => {
   try {
